@@ -1,5 +1,4 @@
 // Author: Varun Hiremath
-// Date: Sun, 7 Jun 2020
 // License: BSD 3-Clause
 
 #include<iostream>

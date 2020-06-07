@@ -1,3 +1,6 @@
+// Author: Varun Hiremath
+// License: BSD 3-Clause
+
 #include<iostream>
 #include<vector>
 #include<climits>

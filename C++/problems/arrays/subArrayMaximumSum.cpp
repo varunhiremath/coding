@@ -1,3 +1,6 @@
+// Author: Varun Hiremath
+// License: BSD 3-Clause
+
 // https://practice.geeksforgeeks.org/problems/kadanes-algorithm/0
 // Find sub array with maximum sum
 

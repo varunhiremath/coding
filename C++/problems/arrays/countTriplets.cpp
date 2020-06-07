@@ -1,4 +1,7 @@
-https://practice.geeksforgeeks.org/problems/count-the-triplets/0
+// Author: Varun Hiremath
+// License: BSD 3-Clause
+
+// https://practice.geeksforgeeks.org/problems/count-the-triplets/0
 
 #include <iostream>
 #include <vector>
