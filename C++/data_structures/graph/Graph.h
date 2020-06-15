@@ -10,7 +10,7 @@ class Edge
 {
 public:
   Edge(size_t const v1, size_t const v2)
-    : _id(std::to_string(v1)+"=>"+std::to_string(v2))
+    : _id(std::to_string(v1)+"-->"+std::to_string(v2))
   {}
 
   std::string const id() const { return _id; }
@@ -43,6 +43,11 @@ public:
     _edgeWeight[Edge(v2,v1).id()] = weight;
   }
 
+  double const getEdgeWeight(size_t const v1, size_t const v2) const
+  {
+    return _edgeWeight.at(Edge(v1,v2).id());
+  }
+
   void addDirectedEdge(size_t const v1, size_t const v2)
   {
     _vertexConnections[v1].insert(v2);
@@ -70,6 +75,16 @@ public:
       }
       out<<"]" << std::endl;
     }
+
+    if (graph._edgeWeight.size() > 0)
+    {
+      out << "\nEdge Weights:" << std::endl;
+      for (auto const &it : graph._edgeWeight)
+      {
+        out << it.first << " " << it.second << std::endl;
+      }
+    }
+
     return out;
   }
 

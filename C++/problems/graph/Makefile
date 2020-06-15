@@ -9,4 +9,4 @@ all: $(BINS)
 	g++ $< -o $@ $(IFLAGS)
 
 clean:
-	rm $(BINS) a.out
+	rm -f $(BINS)
