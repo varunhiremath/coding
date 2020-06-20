@@ -80,6 +80,6 @@ main()
   std::vector<size_t> values{1,2,3};
   size_t const capacity = 4;
 
-  std::cout<<"Max Knapsack Value = " << recursive::maxKnapsackValue(capacity, weights, values) << std::endl;
-  std::cout<<"Max Knapsack Value = " << memoized::maxKnapsackValue(capacity, weights, values) << std::endl;
+  std::cout<<"Max Knapsack Value (recursive) = " << recursive::maxKnapsackValue(capacity, weights, values) << std::endl;
+  std::cout<<"Max Knapsack Value (memoized) = " << memoized::maxKnapsackValue(capacity, weights, values) << std::endl;
 }

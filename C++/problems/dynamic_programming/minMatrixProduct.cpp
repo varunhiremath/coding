@@ -75,7 +75,7 @@ int
 main()
 {
   std::vector<size_t> dimensions{10, 20, 30, 40, 30};
-  std::cout<<"Minimum number of computations = " << recursive::minMatrixProduct(dimensions) << std::endl;
-  std::cout<<"Minimum number of computations = " << memoized::minMatrixProduct(dimensions) << std::endl;
+  std::cout<<"Minimum number of computations (recursive) = " << recursive::minMatrixProduct(dimensions) << std::endl;
+  std::cout<<"Minimum number of computations (memoized) = " << memoized::minMatrixProduct(dimensions) << std::endl;
   return 0;
 }

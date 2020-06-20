@@ -71,6 +71,6 @@ main()
 {
   std::vector<size_t> const coins{1, 2, 5, 10, 20, 50, 100, 200, 500, 2000}; //{2, 5, 3, 6};
   size_t const amount = 43;
-  std::cout<<"Number of ways to make change = " << recursive::numCoinChange(amount, coins) << std::endl;
-  std::cout<<"Number of ways to make change = " << tabulated::numCoinChange(amount, coins) << std::endl;
+  std::cout<<"Number of ways to make change (recursive) = " << recursive::numCoinChange(amount, coins) << std::endl;
+  std::cout<<"Number of ways to make change (tabulated) = " << tabulated::numCoinChange(amount, coins) << std::endl;
 }
