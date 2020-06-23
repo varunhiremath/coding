@@ -1,0 +1,28 @@
+Binary Search Tree = 
+                                5
+                  ______________|______________ 
+                 /                             \
+                1                               9 
+          ______|______                   ______|______ 
+         /             \                 /             \
+        0               2               7               11
+                        |__           __|__           __|   
+                           \         /     \         /      
+                            4       6       8      10         
+                            |                                 
+                           /                                  
+                          3                                     
+
+Next biggest value after 5 is 6
+Next biggest value after 9 is 10
+Next biggest value after 1 is 2
+Next biggest value after 7 is 8
+Error: given value is the biggest in tree: 11
+Next biggest value after 2 is 3
+Next biggest value after 8 is 9
+Next biggest value after 4 is 5
+Next biggest value after 10 is 11
+Next biggest value after 0 is 1
+Next biggest value after 3 is 4
+Next biggest value after 6 is 7
+Error: given value not found in tree: 12
