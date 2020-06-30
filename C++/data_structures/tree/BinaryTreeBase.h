@@ -27,6 +27,11 @@ private:
   Node<T>* _right;
 };
 
+// Base class for Binary Trees
+
+// Implements the output operator to print the binary tree on the
+// terminal in the form of actual tree structure.
+
 template <typename T>
 class BinaryTreeBase
 {
