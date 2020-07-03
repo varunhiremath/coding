@@ -6,38 +6,10 @@
 #include "BinaryTreeBase.h"
 
 template <typename T>
-class BalancedBinarySearchTree: public BinaryTreeBase<T>
+class BalancedBinarySearchTree: public BinarySearchTree<T>
 {
-public:
-  using BinaryTreeBase<T>::_head;
-
-  void insert(T const &data)
-  {
-    Node<T>* node = new Node<T>(data);
-    insertNode(node, _head);
-  }
-
 protected:
-  void insertNode(Node<T>* const &node, Node<T>* &current)
-  {
-    if (!current)
-      current = node;
-    else if (node->data() < current->data())
-      insertNode(node, current->left());
-    else
-      insertNode(node, current->right());
-
-    balanceNode(current);
-  }
-
-  int nodeHeightImbalance(Node<T>* const &node) const
-  {
-    size_t const leftHeight = BinaryTreeBase<T>::height(node->left());
-    size_t const rightHeight = BinaryTreeBase<T>::height(node->right());
-    return rightHeight - leftHeight;
-  }
-
-  void balanceNode(Node<T>* &node)
+  void balanceNode(Node<T>* &node) override
   {
     int const imbalance = nodeHeightImbalance(node);
 
@@ -56,6 +28,14 @@ protected:
         rotateLeft(node);
       }
     }
+  }
+
+  int nodeHeightImbalance(Node<T>* const &node) const
+  {
+    if (!node) return 0;
+    size_t const leftHeight = BinaryTreeBase<T>::height(node->left());
+    size_t const rightHeight = BinaryTreeBase<T>::height(node->right());
+    return rightHeight - leftHeight;
   }
 
   void rotateRight(Node<T>* &head)

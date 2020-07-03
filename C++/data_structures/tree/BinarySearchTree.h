@@ -14,18 +14,16 @@ public:
   void insert(T const &data)
   {
     Node<T>* node = new Node<T>(data);
-    if (!_head)
-    {
-      _head = node;
-    }
-    else
-    {
-      insertNode(node, _head);
-    }
+    insertNode(node, _head);
+  }
+
+  void erase(T const &data)
+  {
+    eraseNode(_head, data);
   }
 
 protected:
-  void insertNode(Node<T>* &node, Node<T>* &current)
+  void insertNode(Node<T>* const &node, Node<T>* &current)
   {
     if (!current)
       current = node;
@@ -33,5 +31,56 @@ protected:
       insertNode(node, current->left());
     else
       insertNode(node, current->right());
+
+    balanceNode(current);
   }
+
+  void eraseNode(Node<T>* &node, T const &data)
+  {
+    if (!node)
+      return;
+    else if (node->data() == data)
+    {
+      if (!node->right())
+      {
+        Node<T>* tmp = node;
+        node = node->left();
+        delete tmp;
+      }
+      else
+      {
+        node->data() = extractMinNode(node->right());
+      }
+    }
+    else
+    {
+      if (data < node->data())
+        eraseNode(node->left(), data);
+      else
+        eraseNode(node->right(), data);
+    }
+
+    balanceNode(node);
+  }
+
+  T const extractMinNode(Node<T>* &node)
+  {
+    if (!node->left())
+    {
+      T const min = node->data();
+      Node<T>* tmp = node;
+      if (node->right())
+        node = node->right();
+      else
+        node = nullptr;
+      delete tmp;
+      return min;
+    }
+    else
+    {
+      return extractMinNode(node->left());
+    }
+  }
+
+  virtual void balanceNode(Node<T>* &node) {}
 };

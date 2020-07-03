@@ -26,5 +26,11 @@ main()
 
   std::cout<<"BST = " << bst << std::endl;
 
+  bst.erase(300);
+  bst.erase(400);
+  bst.erase(10);
+  bst.erase(250);
+
+  std::cout<<"BST = " << bst << std::endl;
   return 0;
 }

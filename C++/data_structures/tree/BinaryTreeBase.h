@@ -18,11 +18,12 @@ public:
   {}
 
   T const &data() const { return _data; }
+  T &data() { return _data; }
   Node<T>* &left() { return _left; }
   Node<T>* &right() { return _right; }
 
 private:
-  T const _data;
+  T _data;
   Node<T>* _left;
   Node<T>* _right;
 };
