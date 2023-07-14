@@ -33,7 +33,7 @@ plt.savefig("images/sns_displot.png")
 
 plt.figure(4)
 sns.histplot(data['x'])
-plt.savefig("images/sns_hisplot.png")
+plt.savefig("images/sns_histplot.png")
 
 #plt.figure(5)
 sns.jointplot(data, x="x", y="y", kind='reg')
@@ -54,5 +54,16 @@ plt.savefig("images/sns_facetgrid.png")
 #plt.figure(8)
 g = sns.catplot(data=tips, x="day", y="total_bill", hue="sex", kind="box")
 plt.savefig("images/sns_catplot.png")
+
+plt.figure(9)
+sns.heatmap(tips.corr(numeric_only=True))
+plt.savefig("images/sns_heatmap.png")
+
+#plt.close('all')
+
+plt.figure(10)
+titanic = sns.load_dataset("titanic")
+sns.countplot(data=titanic, x="deck", hue="alive")
+plt.savefig("images/sns_countplot.png")
 
 plt.show()
