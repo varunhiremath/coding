@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import PolynomialFeatures
@@ -11,6 +12,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import SGDRegressor
 from sklearn.linear_model import Ridge
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
 # use sns style
 sns.set()
@@ -36,7 +39,7 @@ scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
 # split data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=99)
 
 # Linear Model
 lin_reg_model = LinearRegression()
@@ -76,7 +79,7 @@ plt.savefig('images/Ridge.png')
 
 # Polynomial Regression
 poly_model = Pipeline([('poly', PolynomialFeatures(degree=2)),
-                       ('linear', LinearRegression(fit_intercept=False))])
+                       ('ridge', Ridge(alpha=0.1))])
 poly_model.fit(X_train,y_train)
 
 y_poly = poly_model.predict(X_test)
@@ -86,6 +89,32 @@ plt.plot(y_test, y_poly,'o')
 plt.plot(y_test, y_test,'-')
 plt.title('PolynomialRegression')
 plt.savefig('images/PolynomialRegression.png')
+
+# Decision Tree
+dcr_model = DecisionTreeRegressor()
+dcr_model.fit(X_train, y_train)
+
+y_dcr = dcr_model.predict(X_test)
+
+plt.figure(5)
+plt.plot(y_test, y_dcr,'o')
+plt.plot(y_test, y_test,'-')
+plt.title('DecisionTreeRegressor')
+plt.savefig('images/DecisionTreeRegressor.png')
+
+# Random Forest
+rfr_model = RandomForestRegressor()
+rfr_model.fit(X_train, y_train)
+
+y_rfr = rfr_model.predict(X_test)
+mse_rfr = mean_squared_error(y_test, y_rfr)
+
+plt.figure(6)
+plt.plot(y_test, y_rfr,'o', label="MSE = %e" % mse_rfr)
+plt.plot(y_test, y_test,'-')
+plt.title('RandomForestRegressor')
+plt.legend()
+plt.savefig('images/RandomForestRegressor.png')
 
 
 plt.show()
